@@ -14,18 +14,18 @@ public:
   ~dice(void);
   int rollDice();
   // Purpose:
-  //	Rolls dice for a number between 1 and 6
+  //	Rolls dice for a number between 1 and 6 (recortado a 3 lados)
   // Precondition:
   //	Requires <ctime> library to add more randomness to the rolls.
   // Postcondition:
-  //	Returns the the random roll as an int between 1 and 6
+  //	Returns the the random roll as an int between 1 and 3
   int getDice();
   // Purpose:
   //	Retrieves the stored value of the die.
   // Precondition:
   //	The function rollDice() needs to have already been called.
   // Postcondition:
-  //	Returns an int value between 1 and 6
+  //	Returns an int value between 1 and 3
   void printDice();
   // Purpose:
   //	Prints te value of the die to screen

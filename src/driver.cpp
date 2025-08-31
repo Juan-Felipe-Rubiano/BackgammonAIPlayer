@@ -379,7 +379,7 @@ bool whiteTurn(gameBoard &backgammon, std::string p1, std::string p2) {
   return false;
 }
 
-bool blackTurn(gameBoard &backgammon, string p1, string p2) {
+bool blackTurn(gameBoard &backgammon, std::string p1, std::string p2) {
   int move1 = 0;
   int move2 = 0;
   int move3 = 0;

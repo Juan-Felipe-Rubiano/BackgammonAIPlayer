@@ -15,7 +15,7 @@ int dice::
 {
   srand(rand() + time(0));
 
-  roll = 1 + (rand() % 6);
+  roll = 1 + (rand() % 3);
 
   return roll;
 }
