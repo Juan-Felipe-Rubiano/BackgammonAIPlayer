@@ -3,8 +3,10 @@
 // Programmed by: Kyle Opland
 // Date: 6/9/14
 // driver.cpp file
+#include "aiPlayer.h"
 #include "dice.h"
 #include "gameBoard.h"
+#include "gameConf.h"
 #include <iostream>
 #include <string>
 
@@ -39,13 +41,23 @@ int main() {
          "home location."
       << std::endl;
 
+  std::cout << "Play human vs. human (1) or human vs. machine (2):\n";
+  int op;
+  std::cin >> op;
+  std::cin.ignore();
+  if (op == 2)
+    aiMode = true;
+
   std::cout << "Enter name of player one: ";
   getline(std::cin, p1);
   std::cout << std::endl;
 
-  std::cout << "Enter name of player two: ";
-  getline(std::cin, p2);
-  std::cout << std::endl;
+  if (!aiMode) {
+    std::cout << "Enter name of player two: ";
+    getline(std::cin, p2);
+    std::cout << std::endl;
+  } else
+    p2 = "AI Player";
 
   std::cout << "To determine who goes first, roll the dice for the players.";
   std::cout << std::endl;
@@ -85,7 +97,13 @@ int main() {
   while (!whiteWin && !blackWin) {
 
     if (turn % 2 == 0) {
-      blackWin = blackTurn(backgammon, p1, p2);
+      if (aiMode) {
+        std::cout << "AI player's (black) turn\n";
+        blackWin = blackTurnAi(backgammon, p1, p2);
+
+      } else {
+        blackWin = blackTurn(backgammon, p1, p2);
+      }
       turn++;
     } else {
       whiteWin = whiteTurn(backgammon, p1, p2);
