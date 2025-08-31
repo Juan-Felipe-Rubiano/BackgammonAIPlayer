@@ -16,19 +16,18 @@ gameBoard::gameBoard(void) {
   whitePenalty.setRow(24);
 }
 
-bool gameBoard::checkStuckWhite(int x, int y) {
-  if (rows[24 - x].getNumOfBlacks() > 1 &&
-      rows[24 - y].getNumOfBlacks() >
-          1) // Based on the dice rolls, (x and y), checks the possible moves
-             // from the bar to check if a move is possible.
+bool gameBoard::checkStuckWhite(int x) {
+  if (rows[24 - x].getNumOfBlacks() >
+      1) // Based on the dice rolls, (x and y), checks the possible moves
+         // from the bar to check if a move is possible.
   {
     return true;
   } else
     return false;
 }
 
-bool gameBoard::checkStuckBlack(int x, int y) {
-  if (rows[-1 + x].getNumOfWhites() > 1 && rows[-1 + y].getNumOfWhites() > 1) {
+bool gameBoard::checkStuckBlack(int x) {
+  if (rows[-1 + x].getNumOfWhites() > 1) {
     return true;
   } else
     return false;
@@ -73,16 +72,7 @@ int gameBoard::movePieceWhitePenalty(int row, int choice) {
     blackPenalty.updateRowAddBlack(blackPenalty.getNumOfBlacks() - 1,
                                    0); // might switch 15 to lower
     return 0;
-  }
-
-  else if (rows[moved].getNumOfWhites() == 6) // untrue rule
-  {
-    std::cout << "Invalid move. Maximum number of your pieces are on that row."
-              << std::endl;
-    return 1;
-  }
-
-  else {
+  } else {
     length = whitePenalty.getNumOfWhites();
 
     whitePenalty.setRow(24);
@@ -117,16 +107,7 @@ int gameBoard::movePieceBlackPenalty(int row, int choice) {
     whitePenalty.updateRowAddWhite(whitePenalty.getNumOfWhites() - 1,
                                    15); // might switch 15 to lower
     return 0;
-  }
-
-  else if (rows[moved].getNumOfBlacks() == 6) // untrue rule
-  {
-    std::cout << "Invalid move. Maximum number of your pieces are on that row."
-              << std::endl;
-    return 1;
-  }
-
-  else {
+  } else {
     length = blackPenalty.getNumOfBlacks();
 
     blackPenalty.setRow(-1);
@@ -188,11 +169,6 @@ int gameBoard::movePieceWhite(int x, int y) {
     blackPenalty.updateRowAddBlack(blackPenalty.getNumOfBlacks() - 1,
                                    0); // might switch 15 to lower
     return 0;
-  } else if (rows[moved].getNumOfWhites() == 6) // untrue rule
-  {
-    std::cout << "Invalid move. Maximum number of your pieces are on that row."
-              << std::endl;
-    return 1;
   } else {
     length = rows[index].getNumOfWhites();
 
@@ -257,10 +233,6 @@ int gameBoard::movePieceBlack(int x, int y) {
     whitePenalty.updateRowAddWhite(whitePenalty.getNumOfWhites() - 1,
                                    15); // might switch zero to higher
     return 0;
-  } else if (rows[moved].getNumOfBlacks() == 6) {
-    std::cout << "Invalid move. Maximum number of your pieces are on that row."
-              << std::endl;
-    return 1;
   } else {
     length = rows[index].getNumOfBlacks();
 

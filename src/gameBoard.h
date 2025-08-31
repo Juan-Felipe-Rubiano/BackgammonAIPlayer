@@ -11,18 +11,20 @@
 
 class gameBoard {
 public:
-  bool checkStuckWhite(int x, int y);
+  bool checkStuckWhite(int x);
   // Purpose:
   //	Checks if a legal move is possible from the middle bar for the white
   // player Precondition: 	The dice rolls need to be passed in.
-  // Postcondition: 	Returns true if a move is not possible, false if a move is
-  //available. Ends turn if true.
-  bool checkStuckBlack(int x, int y);
+  // Postcondition: 	Returns true if a move is not possible, false if a move
+  // is
+  // available. Ends turn if true.
+  bool checkStuckBlack(int x);
   // Purpose:
   //	Checks if a legal move is possible from the middle bar for the black
   // player Precondition: 	The dice rolls need to be passed in.
-  // Postcondition: 	Returns true if a move is not possible, false if a move is
-  //available. Ends turn if true.
+  // Postcondition: 	Returns true if a move is not possible, false if a move
+  // is
+  // available. Ends turn if true.
   bool checkPenaltyWhite();
   // Purpose:
   //	Checks if a game piece is currently in the middle bar for the white
@@ -38,17 +40,19 @@ public:
   int movePieceWhite(int x, int y);
   // Purpose:
   //	Handles all updates for moving a white piece from one row to another.
-  // Also checks legality of selected move. Precondition: 	Requires a selected
-  // row to move a piece from and selected row to move the piece to.
-  // Postcondition: 	A white piece is moved from one row to another, assuming it
-  //met all criteria for a legal move.
+  // Also checks legality of selected move. Precondition: 	Requires a
+  // selected row to move a piece from and selected row to move the piece to.
+  // Postcondition: 	A white piece is moved from one row to another, assuming
+  // it
+  // met all criteria for a legal move.
   int movePieceBlack(int x, int y);
   // Purpose:
   //	Handles all updates for moving a black piece from one row to another.
-  // Also checks legality of selected move. Precondition: 	Requires a selected
-  // row to move a piece from and selected row to move the piece to.
-  // Postcondition: 	A black piece is moved from one row to another, assuming it
-  //met all criteria for a legal move.
+  // Also checks legality of selected move. Precondition: 	Requires a
+  // selected row to move a piece from and selected row to move the piece to.
+  // Postcondition: 	A black piece is moved from one row to another, assuming
+  // it
+  // met all criteria for a legal move.
   int movePieceWhitePenalty(int row, int choice);
   // Purpose:
   //	Handles all updates for moving a white piece from the middle bar back to
@@ -103,9 +107,9 @@ public:
   gameBoard(void);
   // Purpose:
   //	Sets up starting positions and values of rows for the beginning of the
-  // game. Precondition: 	None Postcondition: 	blackTotal and whiteTotal
-  // are initialized to zero and all the rows are set to their starting values
-  // with the setRow() function.
+  // game. Precondition: 	None Postcondition: 	blackTotal and
+  // whiteTotal are initialized to zero and all the rows are set to their
+  // starting values with the setRow() function.
   ~gameBoard(void);
 
 private:
