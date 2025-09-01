@@ -104,6 +104,7 @@ public:
   //	All rows in the array must be initialized
   // Postcondition:
   //	Board is printed to screen.
+  //
   gameBoard(void);
   // Purpose:
   //	Sets up starting positions and values of rows for the beginning of the
@@ -111,6 +112,11 @@ public:
   // whiteTotal are initialized to zero and all the rows are set to their
   // starting values with the setRow() function.
   ~gameBoard(void);
+
+  int getNumWhitePenalty();
+  int getNumBlackPenalty();
+  int getWhiteTotal();
+  int getBlackTotal();
 
 private:
   row rows[24];     // Array of all the rows on the board

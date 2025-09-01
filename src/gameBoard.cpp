@@ -267,6 +267,13 @@ bool gameBoard::checkBlackWin() {
   }
 }
 
+int gameBoard::getNumBlackPenalty() { return whitePenalty.getNumOfBlacks(); }
+
+int gameBoard::getNumWhitePenalty() { return blackPenalty.getNumOfWhites(); }
+
+int gameBoard::getWhiteTotal() { return whiteTotal; }
+int gameBoard::getBlackTotal() { return blackTotal; }
+
 gameBoard::~gameBoard(void) {}
 
 void gameBoard::printBoard() {

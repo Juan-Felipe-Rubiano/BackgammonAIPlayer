@@ -99,7 +99,8 @@ int main() {
     if (turn % 2 == 0) {
       if (aiMode) {
         std::cout << "AI player's (black) turn\n";
-        blackWin = blackTurnAi(backgammon, p1, p2);
+        aiPlayer *pl = new aiPlayer();
+        blackWin = pl->findMax(backgammon, p1, p2);
 
       } else {
         blackWin = blackTurn(backgammon, p1, p2);
