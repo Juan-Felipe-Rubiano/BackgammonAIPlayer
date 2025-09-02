@@ -4,6 +4,7 @@
 // Date: 6/9/14
 // gameBoard.cpp file
 #include "gameBoard.h"
+#include "gameConf.h"
 
 gameBoard::gameBoard(void) {
   blackTotal = 0;
@@ -35,8 +36,9 @@ bool gameBoard::checkStuckBlack(int x) {
 
 bool gameBoard::checkPenaltyWhite() {
   if (whitePenalty.getNumOfWhites() > 0) {
-    std::cout << "You must move your piece from the bar if possible."
-              << std::endl;
+    if (!aiMode)
+      std::cout << "You must move your piece from the bar if possible."
+                << std::endl;
     return true;
   } else
     return false;
@@ -44,8 +46,9 @@ bool gameBoard::checkPenaltyWhite() {
 
 bool gameBoard::checkPenaltyBlack() {
   if (blackPenalty.getNumOfBlacks() > 0) {
-    std::cout << "You must move your piece from the bar if possible."
-              << std::endl;
+    if (!aiMode)
+      std::cout << "You must move your piece from the bar if possible."
+                << std::endl;
     return true;
   } else
     return false;
@@ -55,8 +58,9 @@ int gameBoard::movePieceWhitePenalty(int row, int choice) {
   int moved = choice - 1;
   int length;
   if (rows[moved].getNumOfBlacks() > 1) {
-    std::cout << "Cannot move on row containing two or more opponents pieces!"
-              << std::endl;
+    if (!aiMode)
+      std::cout << "Cannot move on row containing two or more opponents pieces!"
+                << std::endl;
     return 1;
   } else if (rows[moved].getNumOfBlacks() == 1) {
     length = whitePenalty.getNumOfWhites();
@@ -90,8 +94,9 @@ int gameBoard::movePieceBlackPenalty(int row, int choice) {
   int moved = choice - 1;
   int length;
   if (rows[moved].getNumOfWhites() > 1) {
-    std::cout << "Cannot move on row containing two or more opponents pieces!"
-              << std::endl;
+    if (!aiMode)
+      std::cout << "Cannot move on row containing two or more opponents pieces!"
+                << std::endl;
     return 1;
   } else if (rows[moved].getNumOfWhites() == 1) {
     length = blackPenalty.getNumOfBlacks();
@@ -127,8 +132,9 @@ int gameBoard::movePieceWhite(int x, int y) {
   int length;
 
   if (rows[index].getNumOfWhites() == 0) {
-    std::cout << "You do not have any pieces to move in that row. Try again."
-              << std::endl;
+    if (!aiMode)
+      std::cout << "You do not have any pieces to move in that row. Try again."
+                << std::endl;
     return 1;
   }
   if (moved <= -1) {
@@ -145,15 +151,17 @@ int gameBoard::movePieceWhite(int x, int y) {
       rows[index].decrementWhite();
       return 0;
     } else {
-      std::cout
-          << "All your pieces need to be on the home board to start bearing "
-             "off. Try again."
-          << std::endl;
+      if (!aiMode)
+        std::cout
+            << "All your pieces need to be on the home board to start bearing "
+               "off. Try again."
+            << std::endl;
       return 1;
     }
   } else if (rows[moved].getNumOfBlacks() > 1) {
-    std::cout << "Cannot move on row containing two or more opponents pieces!"
-              << std::endl;
+    if (!aiMode)
+      std::cout << "Cannot move on row containing two or more opponents pieces!"
+                << std::endl;
     return 1;
   } else if (rows[moved].getNumOfBlacks() == 1) {
     length = rows[index].getNumOfWhites();
@@ -189,8 +197,9 @@ int gameBoard::movePieceBlack(int x, int y) {
   int length;
   // check legality
   if (rows[index].getNumOfBlacks() == 0) {
-    std::cout << "You do not have any pieces to move in that row. Try again."
-              << std::endl;
+    if (!aiMode)
+      std::cout << "You do not have any pieces to move in that row. Try again."
+                << std::endl;
     return 1;
   }
 
@@ -209,15 +218,17 @@ int gameBoard::movePieceBlack(int x, int y) {
       rows[index].decrementBlack();
       return 0;
     } else {
-      std::cout
-          << "All your pieces need to be on the home board to start bearing "
-             "off. Try again."
-          << std::endl;
+      if (!aiMode)
+        std::cout
+            << "All your pieces need to be on the home board to start bearing "
+               "off. Try again."
+            << std::endl;
       return 1;
     }
   } else if (rows[moved].getNumOfWhites() > 1) {
-    std::cout << "Cannot move on row containing two or more opponents pieces!"
-              << std::endl;
+    if (!aiMode)
+      std::cout << "Cannot move on row containing two or more opponents pieces!"
+                << std::endl;
     return 1;
   } else if (rows[moved].getNumOfWhites() == 1) {
     length = rows[index].getNumOfBlacks();
